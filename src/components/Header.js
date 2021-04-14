@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 import title from "../images/title.svg";
 import header from "../images/header.jpg";
+import longArrow from "../images/long-arrow.svg";
 
 const Container = styled.div`
   height: 100vh;
+  min-height: 72rem;
   display: flex;
   align-items: center;
   background: url(${header});
@@ -24,7 +26,7 @@ const Esperluette = styled.i`
   position: absolute;
   font-size: 63rem;
   left: 27rem;
-  top: 5rem;
+  top: 3rem;
 `;
 
 const Logo = styled.img`
@@ -36,7 +38,7 @@ const Logo = styled.img`
 
 const Title = styled.h1`
   position: relative;
-  margin-left: 10rem;
+  margin: 0px 0 5rem 10rem;
 
   span {
     display: block;
@@ -54,6 +56,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
+  margin-top: 10rem;
 `;
 
 const Text = styled.p`
@@ -63,7 +66,6 @@ const Text = styled.p`
 `;
 
 const Button = styled.button`
-  width: 24rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -72,6 +74,17 @@ const Button = styled.button`
   padding: 2rem 4rem;
   background: var(--tertiary);
   border-radius: 2px;
+
+  img {
+    padding-left: 1rem;
+    transition: all 250ms ease-out;
+  }
+
+  &:hover {
+    img {
+      padding-left: 3rem;
+    }
+  }
 `;
 
 const Header = () => {
@@ -92,7 +105,10 @@ const Header = () => {
             auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris
             condimentum nibh, ut fermentum massa justo sit amet risus.
           </Text>
-          <Button>Let’s signup</Button>
+          <Button>
+            Let’s signup
+            <img src={longArrow} alt="sign up" />
+          </Button>
         </Content>
       </Container>
     </>

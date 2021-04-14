@@ -66,7 +66,7 @@ export default createGlobalStyle`
     font-feature-settings: "pnum";
     font-variant-numeric: proportional-nums;
     font-family: "Agrandir";
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
   }
 
   h1, h2, i {
@@ -108,21 +108,6 @@ export default createGlobalStyle`
     letter-spacing: 2px;
   }
 
-  blockquote, q {
-    quotes: none;
-  }
-
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
   // Scrollbar
 
   /* Works on Firefox */
@@ -142,7 +127,6 @@ export default createGlobalStyle`
 
   *::-webkit-scrollbar-thumb {
     background-color: var(--secondary);
-    /* border-radius: 20px; */
     border: 3px solid transparent;
   }
 `;

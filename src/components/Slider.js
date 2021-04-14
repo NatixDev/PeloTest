@@ -9,10 +9,11 @@ import arrowLeft from "../images/arrow-left.svg";
 import arrowRight from "../images/arrow-right.svg";
 
 const Container = styled.div`
+  height: 60vh;
+  min-height: 50rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
   background: #eff6eb;
   color: var(--secondary);
 `;
