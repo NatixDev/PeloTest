@@ -123,18 +123,6 @@ export default createGlobalStyle`
     border-spacing: 0;
   }
 
-  /* pre {
-    display: block;
-    padding: 2rem;
-    margin-top: 4rem;
-    overflow: auto;
-    font-size: 85%;
-    line-height: 1.45;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace;
-  } */
-
   // Scrollbar
 
   /* Works on Firefox */

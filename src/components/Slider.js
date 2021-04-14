@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
+
 import eye from "../images/eye.svg";
 import circles from "../images/circles.svg";
 import tale from "../images/tale.svg";
