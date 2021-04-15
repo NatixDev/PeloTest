@@ -9,8 +9,8 @@ import arrowLeft from "../images/arrow-left.svg";
 import arrowRight from "../images/arrow-right.svg";
 
 const Container = styled.div`
-  height: 60vh;
-  min-height: 50rem;
+  min-height: 40rem;
+  padding: 5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,11 +18,14 @@ const Container = styled.div`
   color: var(--secondary);
 `;
 
+const SlideContainer = styled.div`
+  width: 60rem;
+  padding: 0 10rem 0rem 10rem;
+`;
+
 const Slide = styled.div`
   position: relative;
   display: none;
-  max-width: 60rem;
-  padding: 0 10rem 0rem 10rem;
   text-align: center;
 
   &.active {
@@ -32,6 +35,7 @@ const Slide = styled.div`
 
 const Arrow = styled.img`
   padding-top: 10rem;
+  cursor: pointer;
 `;
 
 const Icon = styled.img`
@@ -48,6 +52,7 @@ const Text = styled.p`
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const slideRefs = React.useRef({});
 
   const sliderList = [
     {
@@ -71,22 +76,102 @@ const Slider = () => {
   ];
 
   const prevSlide = () => {
+    gsap.to(slideRefs.current[currentIndex], {
+      autoAlpha: 0,
+      display: "none",
+      duration: 0.75,
+      ease: "power3.in",
+    });
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      gsap.fromTo(
+        slideRefs.current[currentIndex - 1],
+        {
+          autoAlpha: 0,
+          display: "none",
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          duration: 0.75,
+          delay: 0.75,
+          ease: "power3.out",
+        }
+      );
+      setTimeout(() => {
+        setCurrentIndex(currentIndex - 1);
+      }, 750);
     } else {
-      setCurrentIndex(sliderList.length - 1);
+      gsap.fromTo(
+        slideRefs.current[sliderList.length - 1],
+        {
+          autoAlpha: 0,
+          display: "none",
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          duration: 0.75,
+          delay: 0.75,
+          ease: "power3.out",
+        }
+      );
+      setTimeout(() => {
+        setCurrentIndex(sliderList.length - 1);
+      }, 750);
     }
   };
   const nextSlide = () => {
+    gsap.to(slideRefs.current[currentIndex], {
+      autoAlpha: 0,
+      display: "none",
+      duration: 0.75,
+      ease: "power3.in",
+    });
     if (currentIndex < sliderList.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      gsap.fromTo(
+        slideRefs.current[currentIndex + 1],
+        {
+          autoAlpha: 0,
+          display: "none",
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          duration: 0.75,
+          delay: 0.75,
+          ease: "power3.out",
+        }
+      );
+      setTimeout(() => {
+        setCurrentIndex(currentIndex + 1);
+      }, 750);
     } else {
-      setCurrentIndex(0);
+      gsap.fromTo(
+        slideRefs.current[0],
+        {
+          autoAlpha: 0,
+          display: "none",
+        },
+        {
+          autoAlpha: 1,
+          display: "block",
+          duration: 0.75,
+          delay: 0.75,
+          ease: "power3.out",
+        }
+      );
+      setTimeout(() => {
+        setCurrentIndex(0);
+      }, 750);
     }
   };
 
   const displayList = sliderList.map((slide, index) => (
-    <Slide key={index} className={index === currentIndex ? "active" : ""}>
+    <Slide
+      key={index}
+      className={index === currentIndex ? "active" : ""}
+      ref={element => (slideRefs.current[index] = element)}
+    >
       <Icon src={slide.icon} alt="icon" />
       <Title>{slide.title}</Title>
       <Text>{slide.text}</Text>
@@ -96,7 +181,7 @@ const Slider = () => {
   return (
     <Container>
       <Arrow src={arrowLeft} onClick={() => prevSlide()} alt="Left Arrow" />
-      {displayList}
+      <SlideContainer>{displayList}</SlideContainer>
       <Arrow src={arrowRight} onClick={() => nextSlide()} alt="Right Arrow" />
     </Container>
   );

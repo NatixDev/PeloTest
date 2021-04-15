@@ -6,6 +6,7 @@ import header from "../images/header.jpg";
 import longArrow from "../images/long-arrow.svg";
 
 const Container = styled.div`
+  position: relative;
   height: 100vh;
   min-height: 72rem;
   display: flex;
@@ -18,15 +19,15 @@ const Layer = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
-  background: rgba(6, 33, 5, 0.6);
   mix-blend-mode: multiply;
+  background: rgba(6, 33, 5, 0.6);
 `;
 
 const Esperluette = styled.i`
   position: absolute;
-  font-size: 63rem;
-  left: 27rem;
   top: 3rem;
+  left: 27rem;
+  font-size: 63rem;
 `;
 
 const Logo = styled.img`
@@ -89,29 +90,27 @@ const Button = styled.button`
 
 const Header = () => {
   return (
-    <>
+    <Container>
       <Layer>
         <Esperluette>&</Esperluette>
       </Layer>
-      <Container>
-        <Logo src={title} alt="Title" />
-        <Title>
-          <span>City</span>
-          <span>Concrete</span>
-        </Title>
-        <Content>
-          <Text>
-            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-            auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus.
-          </Text>
-          <Button>
-            Let’s signup
-            <img src={longArrow} alt="sign up" />
-          </Button>
-        </Content>
-      </Container>
-    </>
+      <Logo src={title} alt="Title" />
+      <Title>
+        <span>City</span>
+        <span>Concrete</span>
+      </Title>
+      <Content>
+        <Text>
+          Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+          nibh, ut fermentum massa justo sit amet risus.
+        </Text>
+        <Button>
+          Let’s signup
+          <img src={longArrow} alt="sign up" />
+        </Button>
+      </Content>
+    </Container>
   );
 };
 

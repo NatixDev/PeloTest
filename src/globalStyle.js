@@ -100,6 +100,7 @@ export default createGlobalStyle`
     background: none;
     border: none;
     outline: none;
+    cursor: pointer;
   }
 
   button {
